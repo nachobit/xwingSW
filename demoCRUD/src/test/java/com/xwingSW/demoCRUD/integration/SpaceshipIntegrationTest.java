@@ -24,8 +24,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.xwingSW.demoCRUD.controller.SpaceshipController;
 import com.xwingSW.demoCRUD.model.Spaceship;
+import com.xwingSW.demoCRUD.service.RabbitMQSender;
 import com.xwingSW.demoCRUD.service.SpaceshipService;
-
 
 @WebMvcTest(SpaceshipController.class)
 @AutoConfigureMockMvc
@@ -36,6 +36,9 @@ public class SpaceshipIntegrationTest {
 
     @MockBean
     private SpaceshipService spaceshipService;
+    
+    @MockBean
+    private RabbitMQSender rabbitMQSender;
 	
 	@Test
 	@WithMockUser(username = "user", roles = { "USER" })

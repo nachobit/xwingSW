@@ -1,6 +1,5 @@
 package com.xwingSW.demoCRUD.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xwingSW.demoCRUD.model.Spaceship;
+import com.xwingSW.demoCRUD.service.RabbitMQSender;
 import com.xwingSW.demoCRUD.service.SpaceshipService;
 
 
@@ -23,8 +23,13 @@ import com.xwingSW.demoCRUD.service.SpaceshipService;
 @RequestMapping("/api/spaceships")
 public class SpaceshipController {
 	
-	@Autowired
-	private SpaceshipService spaceshipService;
+	private final SpaceshipService spaceshipService;
+    private final RabbitMQSender rabbitMQSender;
+    
+    public SpaceshipController(SpaceshipService service, RabbitMQSender rabbitMQSender) {
+        this.spaceshipService = service;
+        this.rabbitMQSender = rabbitMQSender;
+    }
 
     @GetMapping
     public ResponseEntity<Page<Spaceship>> getAllSpaceships(Pageable pageable) {
@@ -54,5 +59,12 @@ public class SpaceshipController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteSpaceship(@PathVariable Long id) {
     	return ResponseEntity.noContent().build();
+    }
+    
+    //RabbitMQ
+    @PostMapping("/send-message")
+    public ResponseEntity<String> sendMessageToQueue(@RequestParam String message) {
+        rabbitMQSender.sendMessage(message);
+        return ResponseEntity.ok("Message sent to RabbitMQ: " + message);
     }
 }
