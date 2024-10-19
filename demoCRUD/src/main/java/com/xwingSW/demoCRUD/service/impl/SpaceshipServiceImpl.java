@@ -7,11 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.xwingSW.demoCRUD.exception.NotFoundException;
 import com.xwingSW.demoCRUD.model.Spaceship;
 import com.xwingSW.demoCRUD.repository.SpaceshipRepository;
 import com.xwingSW.demoCRUD.service.SpaceshipService;
-
-import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class SpaceshipServiceImpl implements SpaceshipService {
@@ -29,7 +28,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
 	@Cacheable("spaceships")
 	public Spaceship getSpaceshipById(Long id) {
 		return spaceshipRepository.findById(id)
-				.orElseThrow(() -> new EntityNotFoundException("Spaceship not found"));
+				.orElseThrow(() -> new NotFoundException("Spaceship not found with id: " + id));
 	}
 
 	@Override

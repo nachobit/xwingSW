@@ -1,0 +1,7 @@
+
+-- Insert demo data spaceships
+INSERT INTO Spaceship (name, type, description) VALUES ('Millennium Falcon', 'FIGHTER', 'The Millennium Falcon is a heavily modified YT-1300 light freighter used by the smuggler Han Solo and his Wookiee co-pilot, Chewbacca.');
+INSERT INTO Spaceship (name, type, description) VALUES ('USS Enterprise', 'CARGO', 'It is a Constitution-class exploration ship of the Starfleet of the United Federation of Planets and is one of the flagships of the Starfleet, launched in 2245, and is commanded by Captain James T. Kirk.');
+INSERT INTO Spaceship (name, type, description) VALUES ('X-Wing', 'FIGHTER', 'Its a type of starfighter. It refers to a series of fighters designed and produced by the Incom Corporation company as the main interceptors for space superiority, close air support and fighter combat, whose main characteristic is the X shape of its four wings.');
+INSERT INTO Spaceship (name, type, description) VALUES ('Starliner 2000', 'TRANSPORT', 'Luxury spacecraft designed for passenger transport between planets.');
+INSERT INTO Spaceship (name, type, description) VALUES ('Y-Wing', 'FIGHTER', 'Its a type of starfighter. It refers to a series of fighters designed and produced by the Incom Corporation company as the main interceptors for space superiority, close air support and fighter combat, whose main characteristic is the X shape of its four wings.');
