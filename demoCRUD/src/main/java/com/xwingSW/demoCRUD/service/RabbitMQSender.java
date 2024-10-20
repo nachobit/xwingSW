@@ -1,7 +1,6 @@
 package com.xwingSW.demoCRUD.service;
 
 import org.springframework.amqp.core.AmqpTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.xwingSW.demoCRUD.config.RabbitMQConfig;
@@ -10,7 +9,6 @@ import com.xwingSW.demoCRUD.config.RabbitMQConfig;
 public class RabbitMQSender {
     private final AmqpTemplate amqpTemplate;
 
-    @Autowired
     public RabbitMQSender(AmqpTemplate amqpTemplate) {
         this.amqpTemplate = amqpTemplate;
     }
