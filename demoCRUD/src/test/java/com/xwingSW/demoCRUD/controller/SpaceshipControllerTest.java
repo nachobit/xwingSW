@@ -42,6 +42,7 @@ public class SpaceshipControllerTest {
 		ResponseEntity<Page<Spaceship>> response = spaceshipController.getAllSpaceships(Pageable.unpaged());
 
 		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals("Falcon 9", response.getBody().getContent().get(0).getName());
 	}
 	
 }
